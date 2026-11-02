@@ -1,0 +1,36 @@
+meta {
+  name: 12 PATCH correo parcial
+  type: http
+  seq: 12
+}
+
+patch {
+  url: {{baseUrl}}/cliente/modificar
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": {{clientePatchId}},
+    "email": "crud-temp-patch-actualizado-021126@example.test"
+  }
+}
+
+script:pre-request {
+  const id = Number(bru.getEnvVar("clientePatchId"));
+  if (!Number.isInteger(id) || id <= 1) { throw new Error("Crear primero el temporal; nunca usar el cliente original ID 1."); }
+}
+
+tests {
+  test("HTTP 200", function () { expect(res.status).to.equal(200); });
+}
+
+docs {
+  Prueba controlada con clientes temporales. No utilizar ID 1.
+  Preparar/verificar la sesion con tools/verificar_update_delete.py desde Cmder.
+}

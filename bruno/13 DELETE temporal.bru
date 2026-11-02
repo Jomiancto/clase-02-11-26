@@ -1,0 +1,35 @@
+meta {
+  name: 13 DELETE temporal
+  type: http
+  seq: 13
+}
+
+delete {
+  url: {{baseUrl}}/cliente/eliminar
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": {{clienteDeleteId}}
+  }
+}
+
+script:pre-request {
+  const id = Number(bru.getEnvVar("clienteDeleteId"));
+  if (!Number.isInteger(id) || id <= 1) { throw new Error("Crear primero el temporal; nunca usar el cliente original ID 1."); }
+}
+
+tests {
+  test("HTTP 204", function () { expect(res.status).to.equal(204); });
+}
+
+docs {
+  Prueba controlada con clientes temporales. No utilizar ID 1.
+  Preparar/verificar la sesion con tools/verificar_update_delete.py desde Cmder.
+}

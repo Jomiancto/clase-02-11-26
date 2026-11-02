@@ -1,0 +1,35 @@
+meta {
+  name: 10 TEMP crear para DELETE
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/api/clientes/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Temporal DELETE CRUD",
+    "email": "crud-temp-delete-021126@example.test"
+  }
+}
+
+script:post-response {
+  if (res.status === 201) { bru.setEnvVar("clienteDeleteId", res.body.id); }
+}
+
+tests {
+  test("HTTP 201", function () { expect(res.status).to.equal(201); });
+}
+
+docs {
+  Prueba controlada con clientes temporales. No utilizar ID 1.
+  Preparar/verificar la sesion con tools/verificar_update_delete.py desde Cmder.
+}

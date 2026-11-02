@@ -40,6 +40,17 @@ Git, Django, MariaDB y la preparacion del editor se ejecutaron mediante Cmder.
 - Bruno ejecuto los tres GET y mostro 200/200/404.
 - No se agregaron migraciones ni registros de prueba.
 
+## Avance UPDATE y DELETE: resultados
+
+- Quince pruebas READ/UPDATE/DELETE correctas, sin base de pruebas ni escrituras reales.
+- POST temporales 2 y 3 en Bruno: 201; PATCH nombre y correo del temporal 2: 200.
+- DELETE temporal 3 en Bruno: 204; DELETE inexistente: 404. MariaDB confirmo los cambios.
+- Validaciones HTTP 400 y PATCH inexistente 404 correctos sin modificar filas ante errores.
+- Se retiro tambien el temporal PATCH; hashes de todas las filas de negocio iguales al inicio.
+- Cliente 1 y sus pedidos/items intactos; AUTO_INCREMENT avanzo por los temporales.
+- Proteccion DELETE con pedidos: 409 comprobado con doble ORM; no se intento borrar ID 1.
+- CREATE y READ y endpoints previos correctos antes y despues. Sin cambios de esquema.
+
 ## Comandos finalizados
 
 '''
@@ -56,7 +67,8 @@ text+='''## Procesos activos y comando interrumpido
 03_diagnostico ejecuto .venv/Scripts/python.exe .local/diagnostico.py;
 no termino su registro por UnicodeEncodeError; la repeticion si esta registrada.
 
-22_read_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+31_ud_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+22_read_servidor se detuvo al agregar UPDATE/DELETE, verificando la cadena hasta su Cmder.
 07_servidor fue detenido intencionalmente al agregar READ, despues de verificar
 su cadena hasta el Cmder propio. No se detuvieron MariaDB ni procesos ajenos.
 Ejecuta .venv/Scripts/python.exe manage.py runserver 127.0.0.1:8000 --noreload

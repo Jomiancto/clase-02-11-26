@@ -1,0 +1,31 @@
+meta {
+  name: 15 PATCH inexistente
+  type: http
+  seq: 15
+}
+
+patch {
+  url: {{baseUrl}}/cliente/modificar
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": 999999999,
+    "nombre": "No existe"
+  }
+}
+
+tests {
+  test("HTTP 404", function () { expect(res.status).to.equal(404); });
+}
+
+docs {
+  Prueba controlada con clientes temporales. No utilizar ID 1.
+  Preparar/verificar la sesion con tools/verificar_update_delete.py desde Cmder.
+}

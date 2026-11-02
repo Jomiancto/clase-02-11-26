@@ -15,8 +15,9 @@ La base se comparte con el trabajo anterior: sus tablas productos_app_* se conse
 Las tres migraciones de pedidos_app estan aplicadas; no se regeneraron ni alteraron modelos.
 No hubo migraciones pendientes. Respaldo previo a pruebas en .local/respaldos, excluido de Git.
 
-API de desarrollo local con GET y POST; sin autenticacion. Ejecutar solo en loopback.
-PUT, PATCH y DELETE no estan implementados (405 en las rutas de coleccion).
+API de desarrollo local; sin autenticacion. Ejecutar solo en loopback.
+Las colecciones /api/ conservan GET y POST; PUT, PATCH y DELETE responden 405 alli.
+Cliente agrega PATCH /cliente/modificar y DELETE /cliente/eliminar fuera de /api/.
 Bajo /api/ no hay rutas de detalle. GET /api/clientes/ conserva su paginacion (results, count, next, previous).
 Las rutas READ de clases se describen abajo y devuelven una lista completa o un objeto.
 
@@ -65,7 +66,7 @@ Las tareas Clase: servidor/comprobar/entorno/bruno/database abren Cmder explicit
 
 Extension oficial bruno-api-client.bruno 6.0.0. Coleccion: bruno/, Backend Unidad 2 - CRUD.
 Abrir una peticion .bru con Bruno Request Editor y seleccionar entorno Local.
-Metodo, URL, body JSON, Send y respuesta quedan en el editor. Hay cinco POST y cinco GET.
+Metodo, URL, body JSON, Send y respuesta quedan en el editor. Las peticiones CREATE/READ se conservan y se agregaron temporales, PATCH y DELETE.
 No se necesita la aplicacion Bruno independiente. Bruno CLI no estaba instalado (bru no encontrado).
 Si se instala mas adelante, ejecutar primero solo peticiones GET desde Cmder; no repetir todos los POST.
 
@@ -131,4 +132,10 @@ El script compara hashes de todas las filas de negocio antes y despues.
 Verificado el 02-11-2026: Bruno 200 para /clientes y /clientes/1; 404 para
 /clientes/999999999. El cliente existente es ID 1, Cliente de clase,
 clase-02-11-2026@example.test. Los datos de negocio permanecieron intactos.
-No se agregaron migraciones ni operaciones PATCH, PUT o DELETE.
+En ese avance READ no se agregaron migraciones ni operaciones PATCH, PUT o DELETE.
+
+## UPDATE y DELETE de Cliente
+
+Implementados con funciones @api_view, ORM y ClienteSerializer. Ver [contrato, pruebas y flujo seguro de Bruno](UPDATE_DELETE.md).
+PATCH /cliente/modificar recibe id entero y nombre/email; DELETE /cliente/eliminar recibe solo id.
+Clientes con pedidos no se eliminan: HTTP 409. No se alteraron modelos, serializers ni migraciones.
