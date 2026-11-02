@@ -139,3 +139,34 @@ En ese avance READ no se agregaron migraciones ni operaciones PATCH, PUT o DELET
 Implementados con funciones @api_view, ORM y ClienteSerializer. Ver [contrato, pruebas y flujo seguro de Bruno](UPDATE_DELETE.md).
 PATCH /cliente/modificar recibe id entero y nombre/email; DELETE /cliente/eliminar recibe solo id.
 Clientes con pedidos no se eliminan: HTTP 409. No se alteraron modelos, serializers ni migraciones.
+
+## CRUD Categoria y Producto con funciones
+
+Se agregan diez funciones con @api_view y los serializers existentes. No se cambiaron modelos,
+serializers, migraciones ni rutas previas de Cliente o /api/. Servidor: http://127.0.0.1:8000.
+
+| Metodo | Categoria | Producto | Respuesta |
+|---|---|---|---|
+| POST | /categoria/agregar | /producto/agregar | 201; validacion 400 |
+| GET | /categorias | /productos | 200 y lista, incluida [] |
+| GET | /categorias/<id> | /productos/<id> | 200 o 404 |
+| PATCH | /categoria/modificar | /producto/modificar | 200; 400 o 404 |
+| DELETE | /categoria/eliminar | /producto/eliminar | 204; 400, 404 o 409 |
+
+JSON Categoria: {"nombre":"Ejemplo temporal"}. PATCH: {"id":2,"nombre":"Nombre editado"}.
+JSON Producto: {"nombre":"Ejemplo","descripcion":"Texto","precio":2500,"stock":4,"activo":true,"codigo":"EJEMPLO","categorias":[2]}.
+PATCH Producto: {"id":3,"precio":3200,"stock":7,"categorias":[3]}.
+Los IDs son ejemplos: usar los devueltos por CREATE. DELETE recibe solo {"id":ID_REAL}.
+Nuevas rutas sin barra final. ID del JSON: entero positivo; no admite booleanos ni strings.
+PATCH conserva campos omitidos; categorias reemplaza asociaciones solo cuando se envia.
+No se permite escribir creado ni campos desconocidos. id solo identifica el registro en PATCH.
+Precio y stock admiten cero conforme al modelo; negativos son invalidos. codigo no es unico.
+Categoria con productos y Producto con items devuelven 409 y conservan las relaciones.
+
+Bruno incluye carpetas CRUD Categoria y CRUD Producto, cinco operaciones y ejemplos 400/409.
+Seleccionar Local en cada editor nuevo. Los IDs temporales quedan en 0 al publicar.
+No ejecutar toda la coleccion: contiene POST con efectos reales.
+[Flujo de pruebas, evidencia de MariaDB y limites](CRUD_CATALOGO.md).
+Consultas para Database Client: sql/verificar_catalogo.sql.
+Pruebas automaticas desde Cmder: .venv/Scripts/python.exe tools/pruebas_catalogo.py.
+El ejecutor se niega a sobrescribir su base MariaDB test_clase_catalogo_20261102 si ya existe.

@@ -1,0 +1,35 @@
+meta {
+  name: 07 Stock invalido 400
+  type: http
+  seq: 7
+}
+
+patch {
+  url: {{baseUrl}}/producto/modificar
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": {{productoTempId}},
+    "stock": -1
+  }
+}
+
+script:pre-request {
+  const id = Number(bru.getEnvVar("productoTempId"));
+  if (!Number.isInteger(id) || id <= 1) { throw new Error("Usar exclusivamente el ID temporal de esta sesion."); }
+}
+
+tests {
+  test("HTTP 400", function () { expect(res.status).to.equal(400); });
+}
+
+docs {
+  Seleccionar Local. No ejecutar toda la coleccion; seguir CRUD_CATALOGO.md.
+}

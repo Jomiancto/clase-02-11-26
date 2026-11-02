@@ -1,0 +1,19 @@
+meta {
+  name: 03 Buscar categoria
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/categorias/{{categoriaTempId}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("HTTP 200", function () { expect(res.status).to.equal(200); });
+}
+
+docs {
+  Seleccionar Local. No ejecutar toda la coleccion; seguir CRUD_CATALOGO.md.
+}

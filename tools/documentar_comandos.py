@@ -28,6 +28,8 @@ Git, Django, MariaDB y la preparacion del editor se ejecutaron mediante Cmder.
 - 09_editor_actual: ZIP actual usa directorio de version; deteccion corregida.
 - 10_editor_actual: nombre de extension Python Envs sin sufijo win32-x64; corregido.
 - 12_verificacion: diff --check detecto linea vacia al final del historial; generador ajustado.
+- 41_catalogo_tests: KeyError MIRROR antes de crear la base de pruebas al reemplazar TEST completo.
+  Se corrigio tools/pruebas_catalogo.py para modificar solo TEST.NAME; 43_catalogo_tests paso 36 pruebas.
 
 ## Avance READ: resultados de comprobaciones
 
@@ -51,6 +53,17 @@ Git, Django, MariaDB y la preparacion del editor se ejecutaron mediante Cmder.
 - Proteccion DELETE con pedidos: 409 comprobado con doble ORM; no se intento borrar ID 1.
 - CREATE y READ y endpoints previos correctos antes y despues. Sin cambios de esquema.
 
+## CRUD Categoria y Producto: comprobaciones
+
+- Rama main limpia inicialmente, commit f267e04 y origin exclusivo. Respaldo privado previo.
+- 36 pruebas correctas en MariaDB separada; base de pruebas creada solo si no existia y retirada al terminar.
+- Diez operaciones principales enviadas en Bruno: POST 201, GET 200, PATCH 200 y DELETE 204 por entidad.
+- Bruno 409 para Categoria con Producto y Producto con Item, usando solo relaciones temporales.
+- Validaciones 400 y registros inexistentes 404 por HTTP real desde Cmder.
+- Cliente temporal 4: CREATE/READ/UPDATE/DELETE correctos. Original ID 1 intacto.
+- Todos los temporales retirados; filas de negocio originales completas iguales antes y despues.
+- Modelos, serializers, migraciones y endpoints anteriores conservados.
+
 ## Comandos finalizados
 
 '''
@@ -67,7 +80,8 @@ text+='''## Procesos activos y comando interrumpido
 03_diagnostico ejecuto .venv/Scripts/python.exe .local/diagnostico.py;
 no termino su registro por UnicodeEncodeError; la repeticion si esta registrada.
 
-31_ud_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+44_catalogo_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+31_ud_servidor se detuvo tras verificar su cadena hasta Cmder para cargar Categoria/Producto.
 22_read_servidor se detuvo al agregar UPDATE/DELETE, verificando la cadena hasta su Cmder.
 07_servidor fue detenido intencionalmente al agregar READ, despues de verificar
 su cadena hasta el Cmder propio. No se detuvieron MariaDB ni procesos ajenos.

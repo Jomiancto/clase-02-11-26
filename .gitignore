@@ -27,3 +27,4 @@ FASE*_CMDER.task
 !.vscode/tasks.json
 !.vscode/extensions.json
 !sql/verificar_create.sql
+!sql/verificar_catalogo.sql

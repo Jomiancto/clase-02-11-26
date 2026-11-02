@@ -11,3 +11,7 @@
 - DELETE rechaza clientes con pedidos (409); las pruebas solo usan clientes temporales sin pedidos, nunca ID 1.
 - No repetir POST indiscriminadamente. tools/probar_create.py reutiliza sus datos.
 - No detener procesos ajenos ni usar force push.
+
+- Alcance ampliado: CRUD Categoria y Producto con funciones @api_view, conservando /api/.
+- Categoria con productos y Producto con items: DELETE 409. Probar solo temporales propios.
+- Pruebas de persistencia: tools/pruebas_catalogo.py crea una base MariaDB exclusiva si no existe; nunca sobrescribir una base de pruebas existente.

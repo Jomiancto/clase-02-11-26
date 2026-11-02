@@ -1,4 +1,5 @@
 from django.db import IntegrityError, transaction
+from django.db.models.deletion import ProtectedError
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -118,3 +119,129 @@ def borrar_cliente(request):
                             status=status.HTTP_409_CONFLICT)
         cliente.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# Vistas de clase: Categoria y Producto reutilizan los serializers existentes.
+def _objeto_catalogo(datos, campos):
+    if not isinstance(datos, dict):
+        raise ValidationError({'detail': 'Se requiere un objeto JSON.'})
+    desconocidos = set(datos) - set(campos)
+    if desconocidos:
+        raise ValidationError({'detail': 'Campos no permitidos: ' + ', '.join(sorted(desconocidos))})
+
+
+def _id_catalogo(datos):
+    identificador = datos.get('id')
+    if type(identificador) is not int or not 1 <= identificador <= 9223372036854775807:
+        raise ValidationError({'id': 'Debe ser un entero positivo enviado en el JSON.'})
+    return identificador
+
+
+def _guardar_catalogo(request, modelo, serializador, campos, parcial=False):
+    _objeto_catalogo(request.data, campos | ({'id'} if parcial else set()))
+    identificador = _id_catalogo(request.data) if parcial else None
+    datos = {k: v for k, v in request.data.items() if k != 'id'}
+    if parcial and not datos:
+        raise ValidationError({'detail': 'Envia al menos un campo para modificar.'})
+    try:
+        with transaction.atomic():
+            instancia = None
+            if parcial:
+                try:
+                    instancia = modelo.objects.select_for_update().get(pk=identificador)
+                except modelo.DoesNotExist:
+                    return Response({'detail': 'Registro no encontrado.'}, status=404)
+            serializer = serializador(instancia, data=datos, partial=parcial)
+            serializer.is_valid(raise_exception=True)
+            if modelo is Producto and 'categorias' in serializer.validated_data:
+                # Orden estable y bloqueo de padres durante la escritura M2M.
+                ids = {categoria.pk for categoria in serializer.validated_data['categorias']}
+                bloqueadas = list(Categoria.objects.select_for_update().filter(pk__in=ids).order_by('pk'))
+                if len(bloqueadas) != len(ids):
+                    raise ValidationError({'categorias': 'Una categoria ya no existe.'})
+            serializer.save()
+            return Response(serializer.data, status=200 if parcial else 201)
+    except IntegrityError:
+        return Response({'detail': 'Conflicto de unicidad o relacion; revisa los datos.'}, status=400)
+
+
+def _detalle_catalogo(modelo, serializador, id):
+    try:
+        objeto = modelo.objects.get(pk=id)
+    except modelo.DoesNotExist:
+        return Response({'detail': 'Registro no encontrado.'}, status=404)
+    return Response(serializador(objeto).data, status=200)
+
+
+def _borrar_catalogo(request, modelo):
+    _objeto_catalogo(request.data, {'id'})
+    identificador = _id_catalogo(request.data)
+    try:
+        with transaction.atomic():
+            try:
+                objeto = modelo.objects.select_for_update().get(pk=identificador)
+            except modelo.DoesNotExist:
+                return Response({'detail': 'Registro no encontrado.'}, status=404)
+            if modelo is Categoria and Producto.objects.filter(categorias=identificador).exists():
+                return Response({'detail': 'La categoria tiene productos asociados; no se elimina.'}, status=409)
+            if modelo is Producto and Item.objects.filter(producto_id=identificador).exists():
+                return Response({'detail': 'El producto tiene items asociados; no se elimina.'}, status=409)
+            objeto.delete()
+    except ProtectedError:
+        return Response({'detail': 'El registro esta protegido por relaciones existentes.'}, status=409)
+    return Response(status=204)
+
+
+_CAMPOS_PRODUCTO = {'nombre', 'descripcion', 'precio', 'stock', 'activo', 'codigo', 'categorias'}
+
+
+@api_view(['POST'])
+def crear_categoria(request):
+    return _guardar_catalogo(request, Categoria, CategoriaSerializer, {'nombre'})
+
+
+@api_view(['GET'])
+def listar_categorias(request):
+    categorias = Categoria.objects.all()
+    return Response(CategoriaSerializer(categorias, many=True).data, status=200)
+
+
+@api_view(['GET'])
+def listar_categoria(request, id):
+    return _detalle_catalogo(Categoria, CategoriaSerializer, id)
+
+
+@api_view(['PATCH'])
+def modificar_categoria(request):
+    return _guardar_catalogo(request, Categoria, CategoriaSerializer, {'nombre'}, parcial=True)
+
+
+@api_view(['DELETE'])
+def borrar_categoria(request):
+    return _borrar_catalogo(request, Categoria)
+
+
+@api_view(['POST'])
+def crear_producto(request):
+    return _guardar_catalogo(request, Producto, ProductoSerializer, _CAMPOS_PRODUCTO)
+
+
+@api_view(['GET'])
+def listar_productos(request):
+    productos = Producto.objects.prefetch_related('categorias').all()
+    return Response(ProductoSerializer(productos, many=True).data, status=200)
+
+
+@api_view(['GET'])
+def listar_producto(request, id):
+    return _detalle_catalogo(Producto, ProductoSerializer, id)
+
+
+@api_view(['PATCH'])
+def modificar_producto(request):
+    return _guardar_catalogo(request, Producto, ProductoSerializer, _CAMPOS_PRODUCTO, parcial=True)
+
+
+@api_view(['DELETE'])
+def borrar_producto(request):
+    return _borrar_catalogo(request, Producto)

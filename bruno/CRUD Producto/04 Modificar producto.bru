@@ -1,0 +1,43 @@
+meta {
+  name: 04 Modificar producto
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/producto/modificar
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": {{productoTempId}},
+    "nombre": "TEMP Producto editado",
+    "descripcion": "Editado desde Bruno",
+    "precio": 3200,
+    "stock": 7,
+    "activo": false,
+    "codigo": "TEMP-CAT-021126",
+    "categorias": [
+      {{categoriaSegundaId}}
+    ]
+  }
+}
+
+script:pre-request {
+  const id = Number(bru.getEnvVar("productoTempId"));
+  if (!Number.isInteger(id) || id <= 1) { throw new Error("Usar exclusivamente el ID temporal de esta sesion."); }
+}
+
+tests {
+  test("HTTP 200", function () { expect(res.status).to.equal(200); });
+}
+
+docs {
+  Seleccionar Local. No ejecutar toda la coleccion; seguir CRUD_CATALOGO.md.
+}

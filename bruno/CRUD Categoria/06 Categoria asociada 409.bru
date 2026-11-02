@@ -1,0 +1,34 @@
+meta {
+  name: 06 Categoria asociada 409
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/categoria/eliminar
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": {{categoriaSegundaId}}
+  }
+}
+
+script:pre-request {
+  const id = Number(bru.getEnvVar("categoriaSegundaId"));
+  if (!Number.isInteger(id) || id <= 1) { throw new Error("Usar exclusivamente el ID temporal de esta sesion."); }
+}
+
+tests {
+  test("HTTP 409", function () { expect(res.status).to.equal(409); });
+}
+
+docs {
+  Seleccionar Local. No ejecutar toda la coleccion; seguir CRUD_CATALOGO.md.
+}
