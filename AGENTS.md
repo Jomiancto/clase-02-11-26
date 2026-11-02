@@ -7,6 +7,6 @@
 - .env, .venv, .local y respaldos privados y excluidos de Git.
 - u2_p1_bd compartida: preservar tablas y datos, incluidos productos_app_*.
 - Revisar plan y respaldo antes de migrar. No migrar automaticamente al iniciar.
-- Alcance CREATE con DRF y GET de comprobacion. No UPDATE, DELETE ni Evaluacion II.
+- Alcance CREATE con DRF y READ con @api_view en /clientes y /clientes/<int:id>. No PATCH, PUT, DELETE ni Evaluacion II.
 - No repetir POST indiscriminadamente. tools/probar_create.py reutiliza sus datos.
 - No detener procesos ajenos ni usar force push.

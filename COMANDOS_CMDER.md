@@ -23,6 +23,17 @@ Git, Django, MariaDB y la preparacion del editor se ejecutaron mediante Cmder.
 - 10_editor_actual: nombre de extension Python Envs sin sufijo win32-x64; corregido.
 - 12_verificacion: diff --check detecto linea vacia al final del historial; generador ajustado.
 
+## Avance READ: resultados de comprobaciones
+
+- Git previo limpio, origin exclusivo y commit inicial 9c34643.
+- Cinco pruebas READ correctas sin crear base de pruebas; lista vacia simulada.
+- check sin errores; makemigrations --check --dry-run sin cambios; migrate --check correcto.
+- GET reales /clientes 200, /clientes/1 200 y /clientes/999999999 404.
+- API anterior GET 200; CREATE invalido 400 y valido 201 con ORM create simulado.
+- Hashes de todas las filas de negocio iguales antes y despues.
+- Bruno ejecuto los tres GET y mostro 200/200/404.
+- No se agregaron migraciones ni registros de prueba.
+
 ## Comandos finalizados
 
 ### 1. 2026-11-02T10:35:48
@@ -707,12 +718,414 @@ Objetivo: Preparar o comprobar el componente indicado con resultado real registr
 
 Resultado: codigo 0.
 
+### 57. 2026-11-02T11:04:10
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\documentar_comandos.py
+```
+
+Resultado: codigo 0.
+
+### 58. 2026-11-02T11:04:11
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git add -- README.md INFORME_BACKEND.md COMANDOS_CMDER.md tools/documentar_comandos.py bruno/environments/Local.bru
+```
+
+Resultado: codigo 0.
+
+### 59. 2026-11-02T11:04:11
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\revisar_publicacion.py
+```
+
+Resultado: codigo 0.
+
+### 60. 2026-11-02T11:04:12
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git -c commit.gpgsign=false commit -m "Documentar prueba visual Bruno MariaDB y entorno VS Code"
+```
+
+Resultado: codigo 0.
+
+### 61. 2026-11-02T11:04:13
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git push origin main
+```
+
+Resultado: codigo 0.
+
+### 62. 2026-11-02T11:04:16
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git log -1 --oneline
+```
+
+Resultado: codigo 0.
+
+### 63. 2026-11-02T11:04:17
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git ls-remote origin refs/heads/main
+```
+
+Resultado: codigo 0.
+
+### 64. 2026-11-02T11:04:18
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22188.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git status --short --branch
+```
+
+Resultado: codigo 0.
+
+### 65. 2026-11-02T11:15:29
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 18256.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git status --short --branch
+```
+
+Resultado: codigo 0.
+
+### 66. 2026-11-02T11:15:29
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 18256.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git log -1 --oneline
+```
+
+Resultado: codigo 0.
+
+### 67. 2026-11-02T11:15:29
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 18256.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git remote -v
+```
+
+Resultado: codigo 0.
+
+### 68. 2026-11-02T11:15:30
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 18256.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\estado_read.py
+```
+
+Resultado: codigo 0.
+
+### 69. 2026-11-02T11:16:49
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 15980.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\baseline_read.py
+```
+
+Resultado: codigo 0.
+
+### 70. 2026-11-02T11:16:50
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 15980.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe manage.py check
+```
+
+Resultado: codigo 0.
+
+### 71. 2026-11-02T11:16:52
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 15980.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe manage.py test pedidos_app.test_read --verbosity 2
+```
+
+Resultado: codigo 0.
+
+### 72. 2026-11-02T11:16:54
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 15980.
+
+Objetivo: Inspeccionar migraciones sin modificar el esquema.
+
+```bat
+.venv\Scripts\python.exe manage.py makemigrations --check --dry-run
+```
+
+Resultado: codigo 0.
+
+### 73. 2026-11-02T11:16:56
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 15980.
+
+Objetivo: Inspeccionar migraciones sin modificar el esquema.
+
+```bat
+.venv\Scripts\python.exe manage.py migrate --check
+```
+
+Resultado: codigo 0.
+
+### 74. 2026-11-02T11:17:06
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 25464.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\estado_read.py
+```
+
+Resultado: codigo 0.
+
+### 75. 2026-11-02T10:39:12
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 16648.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe manage.py runserver 127.0.0.1:8000 --noreload
+```
+
+Resultado: codigo 15.
+
+Error: consultar soluciones anteriores y log local de la fase.
+
+### 76. 2026-11-02T11:17:25
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23496.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\estado_read.py --detener-propio
+```
+
+Resultado: codigo 0.
+
+### 77. 2026-11-02T10:39:06
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 16648.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+cmd.exe /d /c INICIAR_BACKEND.cmd 8000
+```
+
+Resultado: codigo 15.
+
+Error: consultar soluciones anteriores y log local de la fase.
+
+### 78. 2026-11-02T11:17:38
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 1748.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\mariadb_local.py
+```
+
+Resultado: codigo 0.
+
+### 79. 2026-11-02T11:17:38
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 1748.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe manage.py check
+```
+
+Resultado: codigo 0.
+
+### 80. 2026-11-02T11:17:40
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 1748.
+
+Objetivo: Inspeccionar migraciones sin modificar el esquema.
+
+```bat
+.venv\Scripts\python.exe manage.py migrate --check
+```
+
+Resultado: codigo 0.
+
+### 81. 2026-11-02T11:17:41
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 1748.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\puerto.py 8000
+```
+
+Resultado: codigo 0.
+
+### 82. 2026-11-02T11:18:21
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 24824.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\verificar_read.py 8000
+```
+
+Resultado: codigo 0.
+
+### 83. 2026-11-02T11:18:23
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 24824.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\baseline_read.py --comprobar
+```
+
+Resultado: codigo 0.
+
+### 84. 2026-11-02T11:22:57
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23684.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\baseline_read.py --comprobar
+```
+
+Resultado: codigo 0.
+
+### 85. 2026-11-02T11:22:59
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23684.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\verificar_origen.py
+```
+
+Resultado: codigo 0.
+
+### 86. 2026-11-02T11:22:59
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23684.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\verificar_remoto.py
+```
+
+Resultado: codigo 0.
+
+### 87. 2026-11-02T11:23:00
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23684.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git diff --check
+```
+
+Resultado: codigo 0.
+
+### 88. 2026-11-02T11:23:00
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23684.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git diff --stat
+```
+
+Resultado: codigo 0.
+
+### 89. 2026-11-02T11:23:00
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 23684.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git diff -- pedidos_app/views.py u2_proyecto1/urls.py
+```
+
+Resultado: codigo 0.
+
 ## Procesos activos y comando interrumpido
 
 03_diagnostico ejecuto .venv/Scripts/python.exe .local/diagnostico.py;
 no termino su registro por UnicodeEncodeError; la repeticion si esta registrada.
 
-07_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+22_read_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+07_servidor fue detenido intencionalmente al agregar READ, despues de verificar
+su cadena hasta el Cmder propio. No se detuvieron MariaDB ni procesos ajenos.
 Ejecuta .venv/Scripts/python.exe manage.py runserver 127.0.0.1:8000 --noreload
 mediante tools/ejecutar.py. No tiene codigo de salida final mientras sigue activo.
 El iniciador ejecuta cd /d "%~dp0" y call .venv/Scripts/activate.bat.
@@ -1101,6 +1514,192 @@ if errorlevel 1 exit /b 1
 "C:\Program Files\Python312\python.exe" tools\ejecutar.py git ls-remote origin refs/heads/main
 if errorlevel 1 exit /b 1
 "C:\Program Files\Python312\python.exe" tools\ejecutar.py git status --short --branch
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/18_read_previa.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\18_read_previa.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\18_read_previa.exit echo %RESULT%
+type .local\18_read_previa.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py git status --short --branch
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git log -1 --oneline
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git remote -v
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\estado_read.py
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/19_read_validar.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\19_read_validar.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\19_read_validar.exit echo %RESULT%
+type .local\19_read_validar.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\baseline_read.py
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe manage.py check
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe manage.py test pedidos_app.test_read --verbosity 2
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe manage.py makemigrations --check --dry-run
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe manage.py migrate --check
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/20_read_identidad.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\20_read_identidad.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\20_read_identidad.exit echo %RESULT%
+type .local\20_read_identidad.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\estado_read.py
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/21_read_reiniciar.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\21_read_reiniciar.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\21_read_reiniciar.exit echo %RESULT%
+type .local\21_read_reiniciar.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\estado_read.py --detener-propio
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/22_read_servidor.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\22_read_servidor.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\22_read_servidor.exit echo %RESULT%
+type .local\22_read_servidor.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py cmd.exe /d /c INICIAR_BACKEND.cmd 8000
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/23_read_http.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\23_read_http.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\23_read_http.exit echo %RESULT%
+type .local\23_read_http.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe tools\verificar_read.py 8000
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\baseline_read.py --comprobar
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/24_read_revision.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\24_read_revision.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\24_read_revision.exit echo %RESULT%
+type .local\24_read_revision.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\baseline_read.py --comprobar
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe tools\verificar_origen.py
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe .local\verificar_remoto.py
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git diff --check
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git diff --stat
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git diff -- pedidos_app/views.py u2_proyecto1/urls.py
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/25_read_publicar.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+set PYTHONUTF8=1
+call :work > .local\25_read_publicar.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\25_read_publicar.exit echo %RESULT%
+type .local\25_read_publicar.log
+exit /b %RESULT%
+:work
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe tools\documentar_comandos.py
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git add -- AGENTS.md README.md INFORME_BACKEND.md COMANDOS_CMDER.md pedidos_app/views.py pedidos_app/test_read.py u2_proyecto1/urls.py tools/documentar_comandos.py tools/verificar_read.py "bruno/06 READ listar clientes.bru" "bruno/07 READ cliente por ID.bru" "bruno/08 READ cliente inexistente.bru"
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py .venv\Scripts\python.exe tools\revisar_publicacion.py
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git diff --cached --stat
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git -c commit.gpgsign=false commit -m "Completar READ de clientes con api_view y pruebas Bruno"
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git push origin main
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git log -1 --oneline
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git ls-remote origin refs/heads/main
+if errorlevel 1 exit /b 1
+.venv\Scripts\python.exe tools\ejecutar.py git status --short --branch
 if errorlevel 1 exit /b 1
 exit /b 0
 ```

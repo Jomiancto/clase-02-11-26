@@ -17,7 +17,8 @@ No hubo migraciones pendientes. Respaldo previo a pruebas en .local/respaldos, e
 
 API de desarrollo local con GET y POST; sin autenticacion. Ejecutar solo en loopback.
 PUT, PATCH y DELETE no estan implementados (405 en las rutas de coleccion).
-No hay rutas de detalle aun. GET lista resultados paginados (results, count, next, previous).
+Bajo /api/ no hay rutas de detalle. GET /api/clientes/ conserva su paginacion (results, count, next, previous).
+Las rutas READ de clases se describen abajo y devuelven una lista completa o un objeto.
 
 ## CREATE y orden de dependencias
 
@@ -91,3 +92,43 @@ Origin debe apuntar unicamente al repositorio oficial; nunca al profesor.
 Estado visual comprobado: Bruno envio Cuaderno Backend (ID 2) con HTTP 201; Database Client mostro la fila y las columnas; navegador integrado /api/ HTTP 200. La conexion queda guardada en el perfil privado de clase.
 
 Distribucion del editor: [ZIP oficial de Microsoft](https://code.visualstudio.com/docs/setup/windows).
+
+
+## READ con decoradores — avance de clase
+
+Las vistas existentes bajo /api/ y todos los serializers se conservan.
+
+| Metodo | Ruta exacta (sin barra final) | Respuesta |
+|---|---|---|
+| GET | /clientes | 200 y lista de clientes; [] cuando no hay resultados |
+| GET | /clientes/<id> | 200 y un cliente; 404 si no existe |
+
+pedidos_app/views.py implementa listar_clientes con @api_view(['GET']),
+Cliente.objects.all(), ClienteSerializer(clientes, many=True) y Response HTTP 200.
+listar_cliente(request, id) usa Cliente.objects.get(pk=id), serializa un solo objeto
+y captura Cliente.DoesNotExist para devolver 404 con detail: Cliente no encontrado.
+Las rutas se registran en u2_proyecto1/urls.py, fuera del prefijo /api/.
+Solo se aceptan IDs enteros no negativos en la URL; una URL no coincidente devuelve 404.
+
+Bruno incluye 06 READ listar clientes, 07 READ cliente por ID y 08 READ cliente inexistente.
+Seleccionar entorno Local en cada nueva pestana; clienteId=1 consulta el cliente existente.
+El ID 999999999 se comprobo inexistente en esta base antes de la prueba 404.
+Estas tres peticiones son GET y se pueden repetir sin crear registros.
+
+Pruebas desde Cmder:
+
+- .venv/Scripts/python.exe manage.py test pedidos_app.test_read --verbosity 2
+- .venv/Scripts/python.exe tools/verificar_read.py 8000
+
+Las cinco pruebas de SimpleTestCase no crean base de pruebas ni escriben en MariaDB.
+Cubren listado, lista vacia, detalle existente, 404 y rechazo de POST en las nuevas rutas.
+verificar_read.py compara HTTP real con ORM, comprueba los endpoints anteriores y
+POST invalido 400. Para comprobar CREATE valido 201 sin insertar filas, ejecuta DRF
+con validacion real y simula unicamente Cliente.objects.create, comprobando sus argumentos.
+No debe confundirse esa comprobacion de regresion con un nuevo INSERT HTTP real.
+El script compara hashes de todas las filas de negocio antes y despues.
+
+Verificado el 02-11-2026: Bruno 200 para /clientes y /clientes/1; 404 para
+/clientes/999999999. El cliente existente es ID 1, Cliente de clase,
+clase-02-11-2026@example.test. Los datos de negocio permanecieron intactos.
+No se agregaron migraciones ni operaciones PATCH, PUT o DELETE.

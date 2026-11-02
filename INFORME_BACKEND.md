@@ -72,3 +72,34 @@ Bruno guardo automaticamente productoId=2 en Local.bru despues del POST visual.
 Pruebas visuales finales completadas: producto en Bruno y Database Client; navegador integrado HTTP 200.
 Las cinco entidades se probaron por HTTP desde Cmder; el producto adicional se envio desde la interfaz Bruno.
 No se atribuyen las otras cuatro creaciones a clicks de Bruno.
+
+
+## Actualizacion READ — 02-11-2026
+
+Se agregaron listar_clientes(request) y listar_cliente(request, id), ambas con
+@api_view(['GET']). Se mantienen CREATE, serializers, modelos, migraciones y /api/.
+Rutas exactas sin barra final: /clientes y /clientes/<int:id>.
+Listado devuelve todos los clientes con many=True y HTTP 200 (incluido []);
+detalle usa ORM get(pk=id) y devuelve 200 o 404 Cliente no encontrado.
+
+Pruebas automaticas desde Cmder: cinco tests correctos, sin configurar base de pruebas.
+Django check sin errores; makemigrations --check --dry-run sin cambios;
+migrate --check correcto. No se aplicaron migraciones.
+HTTP real: /clientes 200; /clientes/1 200; /clientes/999999999 404.
+GET de /, /api/ y las cinco colecciones anteriores: 200.
+POST invalido en /api/clientes/: 400; CREATE valido: 201 en DRF con validacion real,
+comprobando la llamada a ORM create() simulada. No se ejecuto INSERT para repetir CREATE.
+
+Bruno en VS Code ejecuto los tres GET y mostro 200, 200 y 404 con el entorno Local.
+El listado mostro un cliente y el detalle devolvio:
+ID 1; nombre Cliente de clase; email clase-02-11-2026@example.test.
+Database Client conectado a u2_p1_bd mostro pedidos_app_cliente con exactamente esa fila.
+Los hashes de todas las filas de pedidos_app_*, M2M y productos_app_* coincidieron
+con la instantanea tomada antes de las pruebas. Ningun cliente fue creado, modificado o borrado.
+
+El servidor anterior de este proyecto (PID 11548, --noreload) se identifico mediante
+su cadena de procesos hasta .local/07_servidor.cmd dentro de Cmder. Solo ese proceso
+se detuvo para cargar las vistas; MariaDB y procesos ajenos se conservaron.
+La nueva sesion .local/22_read_servidor.cmd mantiene Django en 127.0.0.1:8000.
+VS Code conserva Bruno READ, Database Client, codigo y navegador integrado disponibles.
+No se implementaron PATCH, PUT, DELETE ni Evaluacion II.

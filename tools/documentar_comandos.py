@@ -29,6 +29,17 @@ Git, Django, MariaDB y la preparacion del editor se ejecutaron mediante Cmder.
 - 10_editor_actual: nombre de extension Python Envs sin sufijo win32-x64; corregido.
 - 12_verificacion: diff --check detecto linea vacia al final del historial; generador ajustado.
 
+## Avance READ: resultados de comprobaciones
+
+- Git previo limpio, origin exclusivo y commit inicial 9c34643.
+- Cinco pruebas READ correctas sin crear base de pruebas; lista vacia simulada.
+- check sin errores; makemigrations --check --dry-run sin cambios; migrate --check correcto.
+- GET reales /clientes 200, /clientes/1 200 y /clientes/999999999 404.
+- API anterior GET 200; CREATE invalido 400 y valido 201 con ORM create simulado.
+- Hashes de todas las filas de negocio iguales antes y despues.
+- Bruno ejecuto los tres GET y mostro 200/200/404.
+- No se agregaron migraciones ni registros de prueba.
+
 ## Comandos finalizados
 
 '''
@@ -45,7 +56,9 @@ text+='''## Procesos activos y comando interrumpido
 03_diagnostico ejecuto .venv/Scripts/python.exe .local/diagnostico.py;
 no termino su registro por UnicodeEncodeError; la repeticion si esta registrada.
 
-07_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+22_read_servidor: cmd.exe /d /c INICIAR_BACKEND.cmd 8000 permanece ejecutandose.
+07_servidor fue detenido intencionalmente al agregar READ, despues de verificar
+su cadena hasta el Cmder propio. No se detuvieron MariaDB ni procesos ajenos.
 Ejecuta .venv/Scripts/python.exe manage.py runserver 127.0.0.1:8000 --noreload
 mediante tools/ejecutar.py. No tiene codigo de salida final mientras sigue activo.
 El iniciador ejecuta cd /d "%~dp0" y call .venv/Scripts/activate.bat.
