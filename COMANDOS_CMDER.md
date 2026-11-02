@@ -563,6 +563,150 @@ Resultado: codigo 1.
 
 Error: consultar soluciones anteriores y log local de la fase.
 
+### 45. 2026-11-02T10:48:39
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\documentar_comandos.py
+```
+
+Resultado: codigo 0.
+
+### 46. 2026-11-02T10:48:39
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git add -- .
+```
+
+Resultado: codigo 0.
+
+### 47. 2026-11-02T10:48:40
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\revisar_publicacion.py
+```
+
+Resultado: codigo 0.
+
+### 48. 2026-11-02T10:48:47
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git diff --cached --stat
+```
+
+Resultado: codigo 0.
+
+### 49. 2026-11-02T10:48:47
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git -c commit.gpgsign=false commit -m "Recuperar backend y completar CREATE con DRF, Bruno y Cmder"
+```
+
+Resultado: codigo 0.
+
+### 50. 2026-11-02T10:50:03
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 21000.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\verificar_local_final.py
+```
+
+Resultado: codigo 0.
+
+### 51. 2026-11-02T10:50:05
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 21000.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe tools\documentar_comandos.py
+```
+
+Resultado: codigo 0.
+
+### 52. 2026-11-02T10:50:27
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 19840.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+E:\cmder\opt\vscode-backend\bin\code.cmd --user-data-dir E:\cmder\clase-02-11-26\.local\editor-data --extensions-dir E:\cmder\clase-02-11-26\.local\editor-extensions --reuse-window E:\cmder\clase-02-11-26\pedidos_app\serializers.py E:\cmder\clase-02-11-26\sql\verificar_create.sql "E:\cmder\clase-02-11-26\bruno\03 Crear producto.bru"
+```
+
+Resultado: codigo 0.
+
+### 53. 2026-11-02T10:48:48
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git push -u origin main
+```
+
+Resultado: codigo 0.
+
+### 54. 2026-11-02T10:50:49
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git log -1 --oneline
+```
+
+Resultado: codigo 0.
+
+### 55. 2026-11-02T10:50:50
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 17580.
+
+Objetivo: Revisar/preparar/publicar repositorio oficial; fuentes antiguas solo lectura.
+
+```bat
+git ls-remote origin refs/heads/main
+```
+
+Resultado: codigo 0.
+
+### 56. 2026-11-02T10:57:38
+
+Directorio: E:\cmder\clase-02-11-26. ConEmuPID: 22428.
+
+Objetivo: Preparar o comprobar el componente indicado con resultado real registrado.
+
+```bat
+.venv\Scripts\python.exe .local\verificar_bruno.py
+```
+
+Resultado: codigo 0.
+
 ## Procesos activos y comando interrumpido
 
 03_diagnostico ejecuto .venv/Scripts/python.exe .local/diagnostico.py;
@@ -873,6 +1017,90 @@ if errorlevel 1 exit /b 1
 "C:\Program Files\Python312\python.exe" tools\ejecutar.py git log -1 --oneline
 if errorlevel 1 exit /b 1
 "C:\Program Files\Python312\python.exe" tools\ejecutar.py git ls-remote origin refs/heads/main
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/14_estado_local.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+call :work > .local\14_estado_local.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\14_estado_local.exit echo %RESULT%
+type .local\14_estado_local.log
+exit /b %RESULT%
+:work
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py .venv\Scripts\python.exe .local\verificar_local_final.py
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py .venv\Scripts\python.exe tools\documentar_comandos.py
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/15_pestanas.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+call :work > .local\15_pestanas.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\15_pestanas.exit echo %RESULT%
+type .local\15_pestanas.log
+exit /b %RESULT%
+:work
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py E:\cmder\opt\vscode-backend\bin\code.cmd --user-data-dir E:\cmder\clase-02-11-26\.local\editor-data --extensions-dir E:\cmder\clase-02-11-26\.local\editor-extensions --reuse-window E:\cmder\clase-02-11-26\pedidos_app\serializers.py E:\cmder\clase-02-11-26\sql\verificar_create.sql "E:\cmder\clase-02-11-26\bruno\03 Crear producto.bru"
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/16_bruno_sql.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+call :work > .local\16_bruno_sql.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\16_bruno_sql.exit echo %RESULT%
+type .local\16_bruno_sql.log
+exit /b %RESULT%
+:work
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py .venv\Scripts\python.exe .local\verificar_bruno.py
+if errorlevel 1 exit /b 1
+exit /b 0
+```
+
+Archivo local: .local/17_cierre.cmd
+
+```bat
+@echo off
+call E:\cmder\vendor\init.bat
+cd /d E:\cmder\clase-02-11-26
+call :work > .local\17_cierre.log 2>&1
+set "RESULT=%errorlevel%"
+> .local\17_cierre.exit echo %RESULT%
+type .local\17_cierre.log
+exit /b %RESULT%
+:work
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py .venv\Scripts\python.exe tools\documentar_comandos.py
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py git add -- README.md INFORME_BACKEND.md COMANDOS_CMDER.md tools/documentar_comandos.py bruno/environments/Local.bru
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py .venv\Scripts\python.exe tools\revisar_publicacion.py
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py git -c commit.gpgsign=false commit -m "Documentar prueba visual Bruno MariaDB y entorno VS Code"
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py git push origin main
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py git log -1 --oneline
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py git ls-remote origin refs/heads/main
+if errorlevel 1 exit /b 1
+"C:\Program Files\Python312\python.exe" tools\ejecutar.py git status --short --branch
 if errorlevel 1 exit /b 1
 exit /b 0
 ```

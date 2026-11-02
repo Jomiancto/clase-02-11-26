@@ -87,3 +87,7 @@ INFORME_BACKEND.md distingue comprobaciones automaticas de pruebas visuales.
 .env, .venv, .local, respaldos, datos, logs y credenciales estan excluidos.
 Se versionan codigo, migraciones, requirements, Bruno, SQL de lectura, tareas e iniciadores.
 Origin debe apuntar unicamente al repositorio oficial; nunca al profesor.
+
+Estado visual comprobado: Bruno envio Cuaderno Backend (ID 2) con HTTP 201; Database Client mostro la fila y las columnas; navegador integrado /api/ HTTP 200. La conexion queda guardada en el perfil privado de clase.
+
+Distribucion del editor: [ZIP oficial de Microsoft](https://code.visualstudio.com/docs/setup/windows).

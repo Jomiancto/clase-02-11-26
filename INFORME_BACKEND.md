@@ -43,3 +43,32 @@ Los ejemplos JSON reproducibles se conservan en README y Bruno.
 5. ZIP actual guarda resources dentro de directorio de version: deteccion ajustada sin repetir descarga.
 
 No se implementaron UPDATE, DELETE ni Evaluacion II.
+
+## Publicacion comprobada
+
+Push desde Cmder correcto: commit 6a2afe0879307efbfb7904bbba0fee2e6427c966 en main.
+Git ls-remote coincide. El conector GitHub recupero serializers.py y bruno/bruno.json
+desde el repositorio oficial, confirmando los archivos publicados.
+
+## Prueba visual en VS Code
+
+Bruno oficial 6.0.0 activo en VS Code 1.144.0. Coleccion abierta y entorno Local seleccionado.
+Se envio una sola vez 03 Crear producto: HTTP 201 Created, ID 2, Cuaderno Backend,
+precio 2500, stock 10, activo true, codigo CLASE-021126, categorias [1].
+Verificacion SQL independiente: (2, Cuaderno Backend, 2500, 10, 1, CLASE-021126).
+El verificador exige un solo registro con ese codigo; no se repitio POST.
+Database Client MariaDB conecto con Connection Success (287 ms).
+
+Database Client mostro visualmente las 18 tablas, columnas de pedidos_app_producto
+y sus dos filas: Producto prueba HTTP (ID 1) y Cuaderno Backend (ID 2).
+La segunda fila coincide con el JSON y la respuesta 201 de Bruno.
+La conexion activa de SQL queda en u2_p1_bd.
+
+Navegador integrado de VS Code: /api/ muestra HTTP 200 OK y los cinco enlaces.
+Terminal integrada abierta usando el perfil Cmder (vendor/bin/vscode_init.cmd);
+Django permanece en Cmder/ConEmu externo. Los scripts de clase no dependen del terminal integrado.
+Bruno guardo automaticamente productoId=2 en Local.bru despues del POST visual.
+
+Pruebas visuales finales completadas: producto en Bruno y Database Client; navegador integrado HTTP 200.
+Las cinco entidades se probaron por HTTP desde Cmder; el producto adicional se envio desde la interfaz Bruno.
+No se atribuyen las otras cuatro creaciones a clicks de Bruno.

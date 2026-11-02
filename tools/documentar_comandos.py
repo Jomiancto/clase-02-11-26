@@ -58,3 +58,5 @@ for f in sorted((root/'.local').glob('*.cmd')):
     text+=f"Archivo local: .local/{f.name}\n\n{fence}bat\n{f.read_text(encoding='utf-8').strip()}\n{fence}\n\n"
 (root/'COMANDOS_CMDER.md').write_text('\n'.join(line.rstrip() for line in text.splitlines()).rstrip()+'\n',encoding='utf-8',newline='\n')
 print('Historial actualizado:',len(records),'comandos finalizados y servidor activo.')
+
+# La regeneracion incluye cada comando finalizado hasta el instante anterior a esta ejecucion.
