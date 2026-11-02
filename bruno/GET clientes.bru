@@ -1,0 +1,15 @@
+meta {
+  name: GET clientes
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}/api/clientes/
+  body: none
+  auth: none
+}
+
+tests {
+  test("HTTP 200", function () { expect(res.status).to.equal(200); });
+}

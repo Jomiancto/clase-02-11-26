@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Clase: servidor (Cmder)",
+      "type": "process",
+      "command": "E:\\cmder\\Cmder.exe",
+      "args": [
+        "/START",
+        "${workspaceFolder}",
+        "/X",
+        "-NoSingle -run @${workspaceFolder}\\tools\\tareas\\servidor.task"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Clase: comprobar (Cmder)",
+      "type": "process",
+      "command": "E:\\cmder\\Cmder.exe",
+      "args": [
+        "/START",
+        "${workspaceFolder}",
+        "/X",
+        "-NoSingle -run @${workspaceFolder}\\tools\\tareas\\comprobar.task"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Clase: entorno (Cmder)",
+      "type": "process",
+      "command": "E:\\cmder\\Cmder.exe",
+      "args": [
+        "/START",
+        "${workspaceFolder}",
+        "/X",
+        "-NoSingle -run @${workspaceFolder}\\tools\\tareas\\entorno.task"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Clase: bruno (Cmder)",
+      "type": "process",
+      "command": "E:\\cmder\\Cmder.exe",
+      "args": [
+        "/START",
+        "${workspaceFolder}",
+        "/X",
+        "-NoSingle -run @${workspaceFolder}\\tools\\tareas\\bruno.task"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Clase: database (Cmder)",
+      "type": "process",
+      "command": "E:\\cmder\\Cmder.exe",
+      "args": [
+        "/START",
+        "${workspaceFolder}",
+        "/X",
+        "-NoSingle -run @${workspaceFolder}\\tools\\tareas\\database.task"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

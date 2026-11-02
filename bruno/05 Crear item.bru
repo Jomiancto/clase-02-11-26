@@ -1,0 +1,37 @@
+meta {
+  name: 05 Crear item
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/items/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "cantidad": 2,
+    "precio_unitario": 2500,
+    "pedido": {{pedidoId}},
+    "producto": {{productoId}}
+  }
+}
+
+script:post-response {
+  if (res.status === 201) { bru.setEnvVar("itemId", res.body.id); }
+}
+
+tests {
+  test("Creado HTTP 201", function () { expect(res.status).to.equal(201); });
+}
+
+docs {
+  Ejecutar una sola vez en orden. Repetir POST puede duplicar registros.
+  Categoria y email son unicos. GET permite comprobar lo que ya existe.
+}

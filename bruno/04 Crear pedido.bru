@@ -1,0 +1,36 @@
+meta {
+  name: 04 Crear pedido
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/pedidos/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "fecha": "2026-11-02",
+    "pagado": false,
+    "cliente": {{clienteId}}
+  }
+}
+
+script:post-response {
+  if (res.status === 201) { bru.setEnvVar("pedidoId", res.body.id); }
+}
+
+tests {
+  test("Creado HTTP 201", function () { expect(res.status).to.equal(201); });
+}
+
+docs {
+  Ejecutar una sola vez en orden. Repetir POST puede duplicar registros.
+  Categoria y email son unicos. GET permite comprobar lo que ya existe.
+}

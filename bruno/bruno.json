@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Backend Unidad 2 - CRUD",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

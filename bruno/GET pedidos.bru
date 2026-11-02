@@ -1,0 +1,15 @@
+meta {
+  name: GET pedidos
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{baseUrl}}/api/pedidos/
+  body: none
+  auth: none
+}
+
+tests {
+  test("HTTP 200", function () { expect(res.status).to.equal(200); });
+}

@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bruno-api-client.bruno",
+    "cweijan.vscode-database-client2",
+    "ms-python.python",
+    "batisteo.vscode-django"
+  ]
+}

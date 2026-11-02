@@ -1,0 +1,7 @@
+# Django 6.1.2: version de la ultima migracion original (0003).
+Django==6.1.2
+djangorestframework==3.18.3
+mysqlclient==2.2.8
+asgiref==3.13.0
+sqlparse==0.6.0
+tzdata==2026.5

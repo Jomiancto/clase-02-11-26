@@ -1,0 +1,25 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "terminal.integrated.profiles.windows": {
+    "Cmder": {
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      "args": [
+        "/K",
+        "E:\\cmder\\vendor\\bin\\vscode_init.cmd"
+      ],
+      "env": {
+        "CMDER_ROOT": "E:\\cmder"
+      }
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Cmder",
+  "terminal.external.windowsExec": "E:\\cmder\\Cmder.exe",
+  "files.exclude": {
+    "**/__pycache__": true,
+    ".venv": true,
+    ".local": true
+  },
+  "workbench.editorAssociations": {
+    "*.bru": "bruno.requestEditor"
+  }
+}

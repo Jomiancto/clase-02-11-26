@@ -1,0 +1,86 @@
+{
+  "repository": "https://github.com/enriquepalaciosc/pbe-2026_u2_proyecto1",
+  "commit": "01966d65548bc41cb09249d956c67f2306c85b68",
+  "files": [
+    {
+      "path": "manage.py",
+      "git_blob": "e193da0b923f5c04833f424eb144feb2dde13cf1",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/admin.py",
+      "git_blob": "8c38f3f3dad51e4585f3984282c2a4bec5349c1e",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/apps.py",
+      "git_blob": "1d458706662d3dce9660a16ff449776bccc8286a",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/migrations/0001_initial.py",
+      "git_blob": "413346386e705576eff5e959f1686293d9447acf",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/migrations/0002_pedido.py",
+      "git_blob": "54c8ba0e4b364c6d0083705e96f89a2398b13330",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/migrations/0003_producto_categorias_item.py",
+      "git_blob": "d44c95f87e958b742c0da7f1c1efc55f33b13e55",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/migrations/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/models.py",
+      "git_blob": "143c192cdc4f32d3499d8da39d2b3970cc36a624",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/tests.py",
+      "git_blob": "7ce503c2dd97ba78597f6ff6e4393132753573f6",
+      "adapted": false
+    },
+    {
+      "path": "pedidos_app/views.py",
+      "git_blob": "91ea44a218fbd2f408430959283f0419c921093e",
+      "adapted": false
+    },
+    {
+      "path": "u2_proyecto1/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "adapted": false
+    },
+    {
+      "path": "u2_proyecto1/asgi.py",
+      "git_blob": "ab054f18914677bc615861b1253d5d0d5337f325",
+      "adapted": false
+    },
+    {
+      "path": "u2_proyecto1/settings.py",
+      "git_blob": "4f4d90f6d85dc24c6820cbfb1d8f50d1c3b0a2c3",
+      "adapted": true
+    },
+    {
+      "path": "u2_proyecto1/urls.py",
+      "git_blob": "eb8eb2e8d94c5cdcbb128f92ba07ba3621e10430",
+      "adapted": false
+    },
+    {
+      "path": "u2_proyecto1/wsgi.py",
+      "git_blob": "8daf6bde06e42b936f3e7833ae3087c9fc8885f9",
+      "adapted": false
+    }
+  ]
+}

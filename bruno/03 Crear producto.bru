@@ -1,0 +1,42 @@
+meta {
+  name: 03 Crear producto
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/productos/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Cuaderno Backend",
+    "descripcion": "Prueba CREATE clase 02-11-2026",
+    "precio": 2500,
+    "stock": 10,
+    "activo": true,
+    "codigo": "CLASE-021126",
+    "categorias": [
+      {{categoriaId}}
+    ]
+  }
+}
+
+script:post-response {
+  if (res.status === 201) { bru.setEnvVar("productoId", res.body.id); }
+}
+
+tests {
+  test("Creado HTTP 201", function () { expect(res.status).to.equal(201); });
+}
+
+docs {
+  Ejecutar una sola vez en orden. Repetir POST puede duplicar registros.
+  Categoria y email son unicos. GET permite comprobar lo que ya existe.
+}
